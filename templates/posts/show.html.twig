@@ -12,6 +12,14 @@
             {{ post.title }}
         </h1>
 
+        <div class="mt-2">
+            {% for taxonomy in post.taxonomy %}
+                <span class="inline-block bg-indigo-200 text-indigo-800 text-xs px-2 rounded-full uppercase font-semibold tracking-wide mr-2 mb-2">
+            {{ taxonomy.name }}
+        </span>
+            {% endfor %}
+        </div>
+
         <p class="text-gray-600 mt-4">
             Published on {{ post.createdAt|date('F j, Y') }} by {{ post.author }}
         </p>

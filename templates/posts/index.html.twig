@@ -23,6 +23,15 @@
                             {{ post.title }}
                         {% endif %}
                     </h2>
+
+                    <div class="mt-2">
+                        {% for taxonomy in post.taxonomy %}
+                            <span class="inline-block bg-indigo-200 text-indigo-800 text-xs px-2 rounded-full uppercase font-semibold tracking-wide mr-2 mb-2">
+                                {{ taxonomy.name }}
+                            </span>
+                        {% endfor %}
+                    </div>
+
                     <p class="text-sm text-gray-500 mb-3">Published on {{ post.createdAt|date('F j, Y') }} by {{ post.author }}</p>
                     <p class="text-gray-600 mb-4">{{ post.shortDescription }}</p>
                     <a href="{{ path('app_post_show', {'id': post.id}) }}" class="text-indigo-600 hover:text-indigo-800">Read more &rarr;</a>

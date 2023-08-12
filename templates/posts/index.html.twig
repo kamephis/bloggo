@@ -14,7 +14,8 @@
                     {% if post.image %}
                         <img src="{{ post.image }}" alt="{{ post.title }}" class="w-full h-48 object-cover mb-4 rounded-t-lg">
                     {% endif %}
-                    <h2 class="text-2xl font-semibold mb-2">{{ post.title }}</h2>
+                    <h2 class="text-2xl font-semibold mb-1">{{ post.title }}</h2>
+                    <p class="text-sm text-gray-500 mb-3">Published on {{ post.createdAt|date('F j, Y') }}</p> <!-- Added this line -->
                     <p class="text-gray-600 mb-4">{{ post.shortDescription }}</p>
                     <a href="#" class="text-indigo-600 hover:text-indigo-800">Read more &rarr;</a>
                 </div>

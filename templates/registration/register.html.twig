@@ -3,19 +3,34 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-<main class="container mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 py-8">
-    <h1>Register</h1>
+    <main class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-extrabold text-gray-900 mb-6">
+            Register a new Account
+        </h1>
 
-    {{ form_errors(registrationForm) }}
+        {{ form_errors(registrationForm) }}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+        <div class="w-full md:w-1/2">
+            {{ form_start(registrationForm, {'attr': {'class': 'space-y-4'}}) }}
+            {{ form_row(registrationForm.username, {'attr': {'class': 'border rounded-md px-3 py-2 w-full focus:outline-none focus:border-blue-300'}}) }}
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
-</main>
+            {{ form_row(registrationForm.first_name, {'attr': {'class': 'border rounded-md px-3 py-2 w-full focus:outline-none focus:border-blue-300'}}) }}
+            {{ form_row(registrationForm.last_name, {'attr': {'class': 'border rounded-md px-3 py-2 w-full focus:outline-none focus:border-blue-300'}}) }}
+
+            {{ form_row(registrationForm.email, {'attr': {'class': 'border rounded-md px-3 py-2 w-full focus:outline-none focus:border-blue-300'}}) }}
+
+            {{ form_row(registrationForm.plainPassword, {
+                label: 'Password',
+                'attr': {'class': 'border rounded-md px-3 py-2 w-full focus:outline-none focus:border-blue-300'}
+            }) }}
+
+            <div class="flex items-center">
+                {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'form-checkbox h-5 w-5 text-blue-600 mr-2'}}) }}
+                {{ form_label(registrationForm.agreeTerms) }}
+            </div>
+
+            <button type="submit" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Register</button>
+            {{ form_end(registrationForm) }}
+        </div>
+    </main>
 {% endblock %}

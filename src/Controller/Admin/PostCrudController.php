@@ -25,7 +25,11 @@ class PostCrudController extends AbstractCrudController
             TextField::new('short_description'),
             TextareaField::new('content')
                 ->stripTags(),
-            TextField::new('image'),
+            ImageField::new('image')
+                ->setBasePath('uploads/images')
+                ->setUploadDir('public/uploads/images')
+                ->setUploadedFileNamePattern('[slug]-[contenthash].[extension]')
+                ->setLabel('Image'),
             TextField::new('author'),
             BooleanField::new('published')
         ];

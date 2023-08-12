@@ -1,0 +1,27 @@
+{# templates/posts/show.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block body %}
+    <main class="container mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 py-8">
+        <a href="{{ app.request.headers.get('referer') ?? path('app_posts') }}" class="text-blue-500 hover:underline">← Back</a>
+
+        <h1 class="text-3xl font-extrabold text-gray-900">
+            {{ post.title }}
+        </h1>
+
+        <p class="text-gray-600 mt-4">
+            Published on {{ post.createdAt|date('F j, Y') }} by {{ post.author }}
+        </p>
+
+        {% if post.image %}
+            <img src="{{ asset(image_dir ~ post.image ) }}" alt="{{ post.title }}" class="w-full h-48 object-cover mb-4 rounded-t-lg">
+        {% endif %}
+
+        <div class="mt-4">
+            {{ post.content }}
+        </div>
+    </main>
+{% endblock %}

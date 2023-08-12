@@ -6,7 +6,7 @@ services:
             - ./mysql:/var/lib/mysql
         environment:
             MYSQL_ROOT_PASSWORD: blubberkopf22
-            MYSQL_DATABASE: botany_bay
+            MYSQL_DATABASE: blog
         ports:
             # To allow the host machine to access the ports below, modify the lines below.
             # For example, to allow the host to connect to port 3306 on the container, you would change

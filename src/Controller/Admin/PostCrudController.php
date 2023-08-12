@@ -25,6 +25,8 @@ class PostCrudController extends AbstractCrudController
             TextField::new('short_description'),
             TextareaField::new('content')
                 ->stripTags(),
+            TextField::new('image'),
+            TextField::new('author'),
             BooleanField::new('published')
         ];
     }

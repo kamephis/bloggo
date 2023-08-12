@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Taxonomy;
 use App\Entity\User;
 use App\Entity\Post;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -29,6 +30,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Posts', 'fa-solid fa-newspaper', Post::class)
             ->setController(PostCrudController::class);
+        yield MenuItem::linkToCrud('Taxonomy', 'fa-solid fa-tag', Taxonomy::class)
+            ->setController(TaxonomyCrudController::class);
         yield MenuItem::subMenu('Admin', 'fa-solid fa-screwdriver-wrench')
             ->setSubItems([
                 MenuItem::linkToCrud('Users', 'fa-user fa-solid fa-user', User::class)

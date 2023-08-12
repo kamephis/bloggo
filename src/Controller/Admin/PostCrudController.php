@@ -22,6 +22,12 @@ class PostCrudController extends AbstractCrudController
     {
         return [
             TextField::new('title'),
+            AssociationField::new('taxonomy')
+                ->setLabel('Tags')
+                ->setFormTypeOptions([
+                    'by_reference' => false, // Important for ManyToMany
+                    'multiple' => true
+                ]),
             TextField::new('short_description'),
             TextareaField::new('content')
                 ->stripTags(),

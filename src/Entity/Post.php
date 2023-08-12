@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PostRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -37,6 +39,14 @@ class Post
 
     #[ORM\Column(nullable: true)]
     private ?bool $published = null;
+
+    #[ORM\ManyToMany(targetEntity: Taxonomy::class, inversedBy: 'relatedPosts')]
+    private Collection $taxonomy;
+
+    public function __construct()
+    {
+        $this->taxonomy = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -135,6 +145,30 @@ class Post
     public function setPublished(?bool $published): static
     {
         $this->published = $published;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Taxonomy>
+     */
+    public function getTaxonomy(): Collection
+    {
+        return $this->taxonomy;
+    }
+
+    public function addTaxonomy(Taxonomy $taxonomy): static
+    {
+        if (!$this->taxonomy->contains($taxonomy)) {
+            $this->taxonomy->add($taxonomy);
+        }
+
+        return $this;
+    }
+
+    public function removeTaxonomy(Taxonomy $taxonomy): static
+    {
+        $this->taxonomy->removeElement($taxonomy);
 
         return $this;
     }

@@ -30,7 +30,6 @@ class ConfigurationCrudController extends AbstractCrudController
             TextField::new('site_owner_first_name'),
             TextField::new('site_owner_last_name'),
             TextField::new('site_email'),
-
         ];
     }
     /**
@@ -43,5 +42,4 @@ class ConfigurationCrudController extends AbstractCrudController
             ->setDefaultSort(['id' => 'ASC'])
             ->setPaginatorPageSize(15);
     }
-
 }

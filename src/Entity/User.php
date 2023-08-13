@@ -45,6 +45,27 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?bool $active = true;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $bio = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $profileImg = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $linkedIn = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $instagram = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $github = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $tiktok = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $xing = null;
+
     /**
      * @param array $roles
      */
@@ -179,6 +200,90 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setActive(bool $active): static
     {
         $this->active = $active;
+
+        return $this;
+    }
+
+    public function getBio(): ?string
+    {
+        return $this->bio;
+    }
+
+    public function setBio(?string $bio): static
+    {
+        $this->bio = $bio;
+
+        return $this;
+    }
+
+    public function getProfileImg(): ?string
+    {
+        return $this->profileImg;
+    }
+
+    public function setProfileImg(?string $profileImg): static
+    {
+        $this->profileImg = $profileImg;
+
+        return $this;
+    }
+
+    public function getLinkedIn(): ?string
+    {
+        return $this->linkedIn;
+    }
+
+    public function setLinkedIn(?string $linkedIn): static
+    {
+        $this->linkedIn = $linkedIn;
+
+        return $this;
+    }
+
+    public function getInstagram(): ?string
+    {
+        return $this->instagram;
+    }
+
+    public function setInstagram(?string $instagram): static
+    {
+        $this->instagram = $instagram;
+
+        return $this;
+    }
+
+    public function getGithub(): ?string
+    {
+        return $this->github;
+    }
+
+    public function setGithub(?string $github): static
+    {
+        $this->github = $github;
+
+        return $this;
+    }
+
+    public function getTiktok(): ?string
+    {
+        return $this->tiktok;
+    }
+
+    public function setTiktok(?string $tiktok): static
+    {
+        $this->tiktok = $tiktok;
+
+        return $this;
+    }
+
+    public function getXing(): ?string
+    {
+        return $this->xing;
+    }
+
+    public function setXing(?string $xing): static
+    {
+        $this->xing = $xing;
 
         return $this;
     }

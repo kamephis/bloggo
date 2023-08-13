@@ -34,6 +34,12 @@
 
             <!-- Sidebar for Additional Information -->
             <div class="col-span-1">
+                <h2 class="text-xl font-semibold text-gray-900 mb-4">About the Author</h2>
+                <div class="mb-4">
+                    <h3 class="font-semibold text-gray-900 mb-4">{{ post.author }}</h3>
+                    {{ post.author.bio|raw }}<br>
+                </div>
+
                 <h2 class="text-xl font-semibold text-gray-900 mb-4">Tags</h2>
                 <div class="mb-4">
                     {% for taxonomy in post.taxonomy %}

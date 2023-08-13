@@ -25,6 +25,9 @@ class Configuration
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $siteOwnerLastName = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $siteLogo = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -74,6 +77,18 @@ class Configuration
     public function setSiteOwnerLastName(?string $siteOwnerLastName): static
     {
         $this->siteOwnerLastName = $siteOwnerLastName;
+
+        return $this;
+    }
+
+    public function getSiteLogo(): ?string
+    {
+        return $this->siteLogo;
+    }
+
+    public function setSiteLogo(?string $siteLogo): static
+    {
+        $this->siteLogo = $siteLogo;
 
         return $this;
     }

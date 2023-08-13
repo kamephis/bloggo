@@ -55,7 +55,7 @@
                             <p class="text-sm text-gray-500 mb-4">{{ post.author.bio|raw }}</p>
 
                             {% if post.author.linkedIn or post.author.github or post.author.instagram or post.author.xing %}
-                                <p class="text-md font-medium mb-2">Follow me:</p>
+                                <p class="text-md font-medium mb-2 mt-4">Follow me:</p>
                                 <div class="flex space-x-4">
                                     {% if post.author.linkedIn %}
                                         <a href="{{ post.author.linkedIn }}" target="_blank"
@@ -94,8 +94,8 @@
                         {% for taxonomy in post.taxonomy %}
                             {% set color = colors[loop.index0 % colors|length] %}
                             <span class="inline-block bg-{{ color }}-200 text-{{ color }}-800 text-xs px-2 py-1 rounded-full uppercase font-semibold tracking-wide mr-2 mb-2">
-                        {{ taxonomy.name }}
-                    </span>
+                                {{ taxonomy.name }}
+                            </span>
                         {% endfor %}
                     </div>
                 </div>

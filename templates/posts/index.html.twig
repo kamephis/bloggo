@@ -31,10 +31,12 @@
                             by {{ post.author }}</p>
                         <p class="text-gray-600 mb-4">{{ post.shortDescription|raw }}</p>
                         <div class="mt-2 mb-4">
+                            {% set colors = ['red', 'yellow', 'green', 'blue', 'indigo', 'purple', 'pink'] %}
                             {% for taxonomy in post.taxonomy %}
-                                <span class="inline-block bg-indigo-200 text-indigo-800 text-xs px-2 rounded-full uppercase font-semibold tracking-wide mr-2 mb-2">
-                                {{ taxonomy.name }}
-                            </span>
+                                {% set color = colors[loop.index0 % colors|length] %}
+                                    <span class="inline-block bg-{{ color }}-200 text-{{ color }}-800 text-xs px-2 py-1 rounded-full uppercase font-semibold tracking-wide mr-2 mb-2">
+                                        {{ taxonomy.name }}
+                                    </span>
                             {% endfor %}
                         </div>
                     </div>

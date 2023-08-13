@@ -34,14 +34,14 @@ class Post
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
-    #[ORM\Column(length: 64)]
-    private ?string $author = null;
-
     #[ORM\Column(nullable: true)]
     private ?bool $published = null;
 
     #[ORM\ManyToMany(targetEntity: Taxonomy::class, inversedBy: 'relatedPosts')]
     private Collection $taxonomy;
+
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'posts')]
+    private ?User $author = null;
 
     public function __construct()
     {
@@ -125,12 +125,12 @@ class Post
         return $this;
     }
 
-    public function getAuthor(): ?string
+    public function getAuthor(): ?User
     {
         return $this->author;
     }
 
-    public function setAuthor(string $author): static
+    public function setAuthor(User $author): static
     {
         $this->author = $author;
 

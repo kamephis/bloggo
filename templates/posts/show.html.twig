@@ -13,7 +13,7 @@
                class="text-blue-500 hover:underline text-lg">← Back to Posts</a>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <!-- Main Content -->
             <div class="col-span-2 lg:col-span-2">
                 <h1 class="text-4xl font-extrabold text-gray-900 mb-4">
@@ -60,25 +60,25 @@
                                     {% if post.author.linkedIn %}
                                         <a href="{{ post.author.linkedIn }}" target="_blank"
                                            class="text-blue-600 hover:text-blue-700">
-                                            <i class="fab fa-linkedin-in"></i>
+                                            <i class="fab fa-linkedin-in"></i> LinkedIn
                                         </a>
                                     {% endif %}
                                     {% if post.author.github %}
                                         <a href="{{ post.author.github }}" target="_blank"
                                            class="text-gray-600 hover:text-gray-700">
-                                            <i class="fab fa-github"></i>
+                                            <i class="fab fa-github"></i> Github
                                         </a>
                                     {% endif %}
                                     {% if post.author.instagram %}
                                         <a href="{{ post.author.instagram }}" target="_blank"
                                            class="text-pink-600 hover:text-pink-700">
-                                            <i class="fab fa-instagram"></i>
+                                            <i class="fab fa-instagram"></i> Instagram
                                         </a>
                                     {% endif %}
                                     {% if post.author.xing %}
                                         <a href="{{ post.author.xing }}" target="_blank"
                                            class="text-green-600 hover:text-green-700">
-                                            <i class="fab fa-xing"></i>
+                                            <i class="fab fa-xing"></i> Xing
                                         </a>
                                     {% endif %}
                                 </div>
@@ -89,7 +89,7 @@
                 {% set colors = ['red', 'yellow', 'green', 'blue', 'indigo', 'purple', 'pink'] %}
 
                 <div class="bg-white p-6 rounded-lg shadow-md mt-6">
-                    <h2 class="text-2xl font-semibold mb-4">Tags</h2>
+                    <h2 class="text-2xl font-semibold mb-4">Related Tags</h2>
                     <div class="mb-4">
                         {% for taxonomy in post.taxonomy %}
                             {% set color = colors[loop.index0 % colors|length] %}

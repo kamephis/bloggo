@@ -13,9 +13,9 @@
                class="text-blue-500 hover:underline text-lg">← Back to Posts</a>
         </div>
 
-        <div class="grid grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <!-- Main Content -->
-            <div class="col-span-2">
+            <div class="col-span-2 lg:col-span-2">
                 <h1 class="text-4xl font-extrabold text-gray-900 mb-4">
                     {{ post.title }}
                 </h1>
@@ -37,8 +37,7 @@
             </div>
 
             <!-- Sidebar for Additional Information -->
-            <div class="col-span-1">
-
+            <div class="col-span-1 lg:col-span-1">
                 <div class="bg-white p-6 rounded-lg shadow-md mt-6">
                     <h2 class="text-2xl font-semibold mb-4">About the Author</h2>
 
@@ -95,8 +94,8 @@
                         {% for taxonomy in post.taxonomy %}
                             {% set color = colors[loop.index0 % colors|length] %}
                             <span class="inline-block bg-{{ color }}-200 text-{{ color }}-800 text-xs px-2 py-1 rounded-full uppercase font-semibold tracking-wide mr-2 mb-2">
-                                {{ taxonomy.name }}
-                            </span>
+                        {{ taxonomy.name }}
+                    </span>
                         {% endfor %}
                     </div>
                 </div>

@@ -18,13 +18,15 @@
                         </a>
                     {% endif %}
                     <div class="p-6">
-                        <h2 class="text-2xl font-semibold mb-1">
-                            {% if post.title|length > 70 %}
-                                {{ post.title|slice(0, 70) ~ '...' }}
-                            {% else %}
-                                {{ post.title }}
-                            {% endif %}
-                        </h2>
+                        <a href="{{ path('app_post_show', {'id': post.id}) }}">
+                            <h2 class="text-2xl font-semibold mb-1">
+                                {% if post.title|length > 70 %}
+                                    {{ post.title|slice(0, 70) ~ '...' }}
+                                {% else %}
+                                    {{ post.title }}
+                                {% endif %}
+                            </h2>
+                        </a>
                         <p class="text-sm text-gray-500 mb-3">Published on {{ post.createdAt|date('F j, Y') }}
                             by {{ post.author }}</p>
                         <p class="text-gray-600 mb-4">{{ post.shortDescription }}</p>

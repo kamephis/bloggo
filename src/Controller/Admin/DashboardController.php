@@ -2,6 +2,8 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Configuration;
+use App\Entity\CoreConfig;
 use App\Entity\Taxonomy;
 use App\Entity\User;
 use App\Entity\Post;
@@ -35,7 +37,9 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::subMenu('Admin', 'fa-solid fa-screwdriver-wrench')
             ->setSubItems([
                 MenuItem::linkToCrud('Users', 'fa-user fa-solid fa-user', User::class)
-                    ->setController(UserCrudController::class)
+                    ->setController(UserCrudController::class),
+                MenuItem::linkToCrud('Config', 'fa-user fa-solid fa-cogs', Configuration::class)
+                    ->setController(ConfigurationCrudController::class)
             ]);
     }
 }

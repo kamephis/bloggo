@@ -9,6 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class PostCrudController extends AbstractCrudController
@@ -28,9 +29,8 @@ class PostCrudController extends AbstractCrudController
                     'by_reference' => false, // Important for ManyToMany
                     'multiple' => true
                 ]),
-            TextField::new('short_description'),
-            TextareaField::new('content')
-                ->stripTags(),
+            TextEditorField::new('short_description'),
+            TextEditorField::new('content'),
             ImageField::new('image')
                 ->setBasePath('uploads/images')
                 ->setUploadDir('public/uploads/images')

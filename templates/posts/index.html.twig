@@ -9,6 +9,7 @@
         </h1>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {% for post in posts %}
+                {% if post.published %}
                 <div class="flex flex-col bg-white pb-6 rounded-lg shadow-md">
                     {% if post.image %}
                         <a href="{{ path('app_post_show', {'id': post.id}) }}">
@@ -51,6 +52,7 @@
                         </a>
                     </div>
                 </div>
+                {% endif %}
             {% endfor %}
         </div>
     </div>

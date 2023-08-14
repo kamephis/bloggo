@@ -21,6 +21,12 @@ class Taxonomy
     #[ORM\ManyToMany(targetEntity: Post::class, mappedBy: 'taxonomy')]
     private Collection $relatedPosts;
 
+    #[ORM\Column(length: 64, nullable: true)]
+    private ?string $cssClass = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $url = null;
+
     public function __construct()
     {
         $this->relatedPosts = new ArrayCollection();
@@ -73,5 +79,29 @@ class Taxonomy
     public function __toString(): string
     {
         return $this->name;
+    }
+
+    public function getCssClass(): ?string
+    {
+        return $this->cssClass;
+    }
+
+    public function setCssClass(?string $cssClass): static
+    {
+        $this->cssClass = $cssClass;
+
+        return $this;
+    }
+
+    public function getUrl(): ?string
+    {
+        return $this->url;
+    }
+
+    public function setUrl(?string $url): static
+    {
+        $this->url = $url;
+
+        return $this;
     }
 }

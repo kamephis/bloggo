@@ -73,7 +73,7 @@
                 {% for navitem in navitems %}
                 <li>
                     <a href="{% if navitem.getRoute() %} {{ path( navitem.getRoute()) }} {% endif %}"
-                       class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
+                       class="block py-2 pl-3 pr-4 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
                        aria-current="page">
                         {{ navitem.getName() }}
                     </a>

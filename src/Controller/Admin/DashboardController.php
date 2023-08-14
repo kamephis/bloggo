@@ -35,7 +35,7 @@ class DashboardController extends AbstractDashboardController
             ->setController(PostCrudController::class);
         yield MenuItem::linkToCrud('Taxonomy', 'fa-solid fa-tag', Taxonomy::class)
             ->setController(TaxonomyCrudController::class);
-        yield MenuItem::linkToCrud('Navigation', 'fa-solid fa-tag', Navigation::class)
+        yield MenuItem::linkToCrud('Navigation', 'fa-solid fa-list', Navigation::class)
             ->setController(NavigationCrudController::class);
         yield MenuItem::subMenu('Admin', 'fa-solid fa-screwdriver-wrench')
             ->setSubItems([

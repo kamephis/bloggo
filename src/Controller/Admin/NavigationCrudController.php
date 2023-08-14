@@ -31,8 +31,8 @@ class NavigationCrudController extends AbstractCrudController
             IntegerField::new('sort_order', 'Sort Order'),
             ChoiceField::new('type')
                 ->setChoices([
-                    'Label' => 'label',
                     'Nav' => 'nav',
+                    'Label' => 'label',
                 ]),
             ChoiceField::new('route')->setChoices($this->getAvailableRoutes()),
             TextField::new('url'),

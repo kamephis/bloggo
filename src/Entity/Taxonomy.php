@@ -21,6 +21,12 @@ class Taxonomy
     #[ORM\ManyToMany(targetEntity: Post::class, mappedBy: 'taxonomy')]
     private Collection $relatedPosts;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $sortOrder = null;
+
+    #[ORM\Column(length: 64, nullable: true)]
+    private ?string $cssClass = null;
+
     public function __construct()
     {
         $this->relatedPosts = new ArrayCollection();
@@ -73,5 +79,29 @@ class Taxonomy
     public function __toString(): string
     {
         return $this->name;
+    }
+
+    public function getSortOrder(): ?int
+    {
+        return $this->sortOrder;
+    }
+
+    public function setSortOrder(?int $sortOrder): static
+    {
+        $this->sortOrder = $sortOrder;
+
+        return $this;
+    }
+
+    public function getCssClass(): ?string
+    {
+        return $this->cssClass;
+    }
+
+    public function setCssClass(?string $cssClass): static
+    {
+        $this->cssClass = $cssClass;
+
+        return $this;
     }
 }

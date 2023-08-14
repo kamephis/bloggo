@@ -86,9 +86,9 @@ class Navigation
         return $this;
     }
 
-    public function getRoute(): ?string
+    public function getRoute(): string
     {
-        return $this->route;
+        return $this->route ?? '';
     }
 
     public function setRoute(?string $route): static

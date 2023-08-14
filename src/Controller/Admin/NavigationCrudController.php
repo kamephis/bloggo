@@ -2,27 +2,31 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Taxonomy;
+use App\Entity\Navigation;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
-
-class TaxonomyCrudController extends AbstractCrudController
+class NavigationCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Taxonomy::class;
+        return Navigation::class;
     }
 
     public function configureFields(string $pageName): iterable
     {
         return [
             TextField::new('name'),
-            TextField::new('cssClass'),
+            IntegerField::new('sort_order', 'Sort Order'),
+            $type = ChoiceField::new('type')
+                ->setChoices([
+                    'Label' => 'label',
+                    'Nav' => 'nav',
+                ]),
+            TextField::new('route'),
             TextField::new('url'),
         ];
     }

@@ -2,6 +2,7 @@ twig:
     globals:
         image_dir: 'uploads/images/'
         configuration: '@App\Service\ConfigurationService'
+        navTaxonomies: '@App\Service\NavbarTaxonomies'
     default_path: '%kernel.project_dir%/templates'
 
 when@test:

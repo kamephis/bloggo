@@ -6,6 +6,7 @@ use App\Entity\Page;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
@@ -20,18 +21,17 @@ class PageCrudController extends AbstractCrudController
     {
         return [
             TextField::new('title'),
-            TextField::new('identifier'),
             TextEditorField::new('summary'),
             TextEditorField::new('cms_content'),
             BooleanField::new('published'),
-            TextField::new('route')
+            TextField::new('routeKey')
+                ->setLabel('Route Name')
+                ->setHelp('Enter the route name for this page.'),
+            DateTimeField::new('createdAt'),
+            DateTimeField::new('updatedAt')
         ];
     }
 
-    /**
-     * @param Crud $crud
-     * @return Crud
-     */
     public function configureCrud(Crud $crud): Crud
     {
         return $crud

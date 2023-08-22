@@ -1,0 +1,18 @@
+cmf_routing:
+  chain:
+    routers_by_id:
+      router.default: 100
+      cmf_routing.dynamic_router: 200
+
+  dynamic:
+    enabled: true
+    uri_filter_regexp: '#^(?!/(_(profiler|wdt)|css|images|js)/)#' # Exclude paths from being handled by the dynamic router.
+    controllers_by_type:
+      editable: App\Controller\CmsController::editable
+    generic_controller: App\Controller\CmsController::show
+    templates_by_class:
+      App\Entity\Page: 'page/index.html.twig'
+    persistence:
+      orm:
+        enabled: true
+        route_class: App\Entity\Route

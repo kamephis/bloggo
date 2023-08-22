@@ -6,23 +6,25 @@ use App\Repository\PageRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Cmf\Bundle\RoutingBundle\Doctrine\Orm\Route as BaseRoute;
-
+use Symfony\Cmf\Component\Routing\RouteObjectInterface;
 
 #[ORM\Entity(repositoryClass: PageRepository::class)]
-#[UniqueEntity("route")]
-class Page
+#[UniqueEntity("routeKey")]
+class Page implements RouteObjectInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
+    #[ORM\OneToOne(inversedBy: "page", targetEntity: Route::class, cascade: ["persist", "remove"])]
+    private ?Route $route = null;
+
+    #[ORM\Column(type: "string", length: 255, unique: true)]
+    private ?string $routeKey = null;
+
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $title = null;
-
-    #[ORM\Column(length: 64)]
-    private ?string $identifier = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $summary = null;
@@ -39,14 +41,6 @@ class Page
     #[ORM\Column(nullable: true)]
     private ?bool $published = null;
 
-    #[ORM\Column(type: "string", length: 255)]
-    private ?string $route = null;
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
     public function getTitle(): ?string
     {
         return $this->title;
@@ -55,18 +49,6 @@ class Page
     public function setTitle(?string $title): static
     {
         $this->title = $title;
-
-        return $this;
-    }
-
-    public function getIdentifier(): ?string
-    {
-        return $this->identifier;
-    }
-
-    public function setIdentifier(string $identifier): static
-    {
-        $this->identifier = $identifier;
 
         return $this;
     }
@@ -131,25 +113,54 @@ class Page
         return $this;
     }
 
-    public function getRoute(): ?string
-    {
-        return $this->route;
-    }
-
-    public function setRoute(?string $route): static
-    {
-        $this->route = $route;
-
-        return $this;
-    }
-
-    public function getRouteKey(): string
-    {
-        return $this->route;
-    }
-
     public function getContent(): self
     {
         return $this;
     }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getRouteKey(): ?string
+    {
+        return $this->routeKey;
+    }
+
+    public function setRouteKey(?string $routeKey): void
+    {
+        $this->routeKey = $routeKey;
+    }
+
+    public function getRoute(): ?Route
+    {
+        return $this->route;
+    }
+
+    public function setRoute(?Route $route): self
+    {
+        $this->route = $route;
+
+        // set (or unset) the owning side of the relation
+        $newPage = null === $route ? null : $this;
+        if ($route->getPage() !== $newPage) {
+            $route->setPage($newPage);
+        }
+
+        return $this;
+    }
+    private ?string $routeName = null;
+
+    public function getRouteName(): ?string
+    {
+        return $this->routeName;
+    }
+
+    public function setRouteName(?string $routeName): self
+    {
+        $this->routeName = $routeName;
+        return $this;
+    }
+
 }
